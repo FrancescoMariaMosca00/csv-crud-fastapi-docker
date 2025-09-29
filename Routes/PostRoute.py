@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from Model.Items import Item
 from Services.data_service import ItemDataService
-from Services.Exceptions import ValidationError, InvalidCodeFiscaleError, DuplicateIDError
+from Services.Exceptions import ValidationError, InvalidCodeFiscaleError, DuplicateIDError, InvalidNameError
 
 def CreateRoutePost(service_istance: ItemDataService):
     router = APIRouter()
@@ -14,6 +14,8 @@ def CreateRoutePost(service_istance: ItemDataService):
         except DuplicateIDError as e:
             raise HTTPException(status_code=400, detail=str(e))
         except InvalidCodeFiscaleError as e:
+            raise HTTPException(status_code=400, detail=str(e))
+        except InvalidNameError as e:
             raise HTTPException(status_code=400, detail=str(e))
         except ValidationError as e:  # Catch-all per altre validazioni
             raise HTTPException(status_code=400, detail=str(e))

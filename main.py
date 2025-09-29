@@ -10,37 +10,37 @@ from Routes.GetOneitemRoute import CreateRouteGetOneitem
 from Routes.DeleteRoute import DeleteRouteItem
 from Routes.PutRoute import UpdateRoutePost
 
+
 DATA_DIR = "Data"
 FILE_PATH = os.path.join(DATA_DIR, "items.csv")
-
 columns = ['ID', 'Nome', 'Cognome', 'Codice Fiscale']
-#key_column = 'ID'
-#unique_column = 'Codice Fiscale'
+
 
 data_service_istance = ItemDataService(FILE_PATH, columns)
-#df = data_service_istance.load_data()
-
 app = FastAPI()
-#ENDPOINTS
 
-#Endpoint to count istances of the df
-count_router = CreateRouteCounter(data_service_istance)  # Passa il df
+
+#Router to count all items
+count_router = CreateRouteCounter(data_service_istance)
 app.include_router(count_router)
 
-#Endpoint to get all the istances
+#Router to get all items
 getItem = CreateRouteGetitem(data_service_istance)
 app.include_router(getItem)
 
+#Router to post one item
 postItem = CreateRoutePost(data_service_istance)
 app.include_router(postItem)
 
+#Router to get one item
 getOneItem = CreateRouteGetOneitem(data_service_istance)
 app.include_router(getOneItem)
 
+#Router to delete one item
 deleteOneItem = DeleteRouteItem(data_service_istance)
 app.include_router(deleteOneItem)
 
+#Router to update one item
 updateOneItem = UpdateRoutePost(data_service_istance)
 app.include_router(updateOneItem)
-#Endpoint per ottenere tutti i record
 

@@ -1,7 +1,7 @@
 import os
 import re
 import pandas as pd
-from Services.Exceptions import InvalidCodeFiscaleError, DuplicateIDError, ItemNotFound
+from Services.Exceptions import InvalidCodeFiscaleError, DuplicateIDError, InvalidNameError
 
 class ItemDataService:
     def __init__(self, csv_path: str, columns: list):
@@ -44,7 +44,6 @@ class ItemDataService:
                         'Cognome': item.Cognome,
                         'Codice Fiscale': item.Codice_Fiscale
                     }
-            print(updaterow)
             return updaterow
         else:
             pass
@@ -63,10 +62,10 @@ class ItemDataService:
             raise InvalidCodeFiscaleError("Codice Fiscale non corrisponde al corretto numero di caratteri")
         
         if not re.match(r"^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$", item.Nome):
-            raise NameError(detail="Il Nome può contenere solo lettere e spazi")
+            raise InvalidNameError("Il Nome può contenere solo lettere e spazi")
         
         if not re.match(r"^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$", item.Cognome):
-            raise NameError(detail="Il Cognome può contenere solo lettere e spazi")
+            raise InvalidNameError("Il Cognome può contenere solo lettere e spazi")
 
     
         return True
