@@ -63,7 +63,7 @@ L’applicazione espone un set standard di endpoint REST:
 - **GET /items/** : Restituisce tutti gli items
 - **PUT /items/{id}** : Aggiorna un record esistente.  
 - **DELETE /items/{id}** : Elimina un record dal CSV.
-- **GET /items/count ** : Restituisce il count delle istanze nel file csv.
+- **GET /items/count** : Restituisce il count delle istanze nel file csv.
 
 
 ---
