@@ -79,8 +79,7 @@ Per eseguire l’applicazione è sufficiente:
    
 5. Accedere agli endpoint:
    - Applicazione: [http://127.0.0.1:8000](http://127.0.0.1:8000)  
-   - Documentazione interattiva: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)  
-   - ReDoc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)  
+   - Documentazione interattiva: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs#/)  
 
 
 CURL PER POST:
@@ -89,6 +88,8 @@ C:\Users\PC\OneDrive\Documenti\GitHub\csv-crud-fastapi-docker>curl -X POST "http
 uvicorn main:app --reload   
 
 pip install --no-cache-dir -r requirements.txt
+
+docker build -t csv-crud-api .
 
 docker load -i csv-crud-api-finalespero.tar
 docker run -it --rm -p 8000:8000 csv-crud-api-finalespero
