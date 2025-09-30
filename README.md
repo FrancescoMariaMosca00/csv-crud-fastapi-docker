@@ -72,24 +72,25 @@ L’applicazione espone un set standard di endpoint REST:
 
 Per eseguire l’applicazione è sufficiente:
 
-1. Installare le dipendenze principali (FastAPI, Uvicorn, Pandas).
+1. Clonare la repository
+   Installare le dipendenze principali (FastAPI, Uvicorn, Pandas).
    pip install --no-cache-dir -r requirements.txt
-3. Runnare il main ed avviare il server con il comando:  
+   Runnare il main ed avviare il server con il comando:  
    uvicorn main:app --reload
+2. Oppure scaricare la docker image da qui: https://drive.google.com/file/d/15CGeTnX0rGW5NIRuRf8wCFFaG0NHaR1B/view?usp=drive_link
+   In seguito runnare i seguenti comandi da powershell nella cartella in cui la dockerimage è stata scaricata
+   docker load -i csv-crud-api-projectimage.tar
+
+   e poi eseguire uno dei seguenti comandi:
+   docker run -it --rm -p 8000:8000 csv-crud-api-test
+
+   oppure, nel caso in cui si desiderino i changes sul csv permanenti:
+   docker run -p 8000:8000 -v ${PWD}/data:/app/Data csv-crud-api-projectimage
    
-5. Accedere agli endpoint:
+4. Accedere agli endpoint:
    - Applicazione: [http://127.0.0.1:8000](http://127.0.0.1:8000)  
    - Documentazione interattiva: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs#/)  
 
 
 CURL PER POST:
 C:\Users\PC\OneDrive\Documenti\GitHub\csv-crud-fastapi-docker>curl -X POST "http://localhost:8000/items/" -H "Content-Type: application/json" -d "{\"ID\":98, \"Nome\": \"Mario\", \"Cognome\": \"Rossi\", \"Codice_Fiscale\": \"RSSMRA01A01H501A\"}"
-
-uvicorn main:app --reload   
-
-pip install --no-cache-dir -r requirements.txt
-
-docker build -t csv-crud-api .
-
-docker load -i csv-crud-api-finalespero.tar
-docker run -it --rm -p 8000:8000 csv-crud-api-finalespero
