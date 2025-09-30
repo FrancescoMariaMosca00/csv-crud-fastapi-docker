@@ -54,7 +54,7 @@ Questo approccio rende gli errori **espliciti e leggibili** sia lato codice che 
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 L’applicazione espone un set standard di endpoint REST:
 
@@ -68,7 +68,7 @@ L’applicazione espone un set standard di endpoint REST:
 
 ---
 
-## ▶️ Avvio dell’applicazione
+##Avvio dell’applicazione
 
 Per eseguire l’applicazione è sufficiente:
 
