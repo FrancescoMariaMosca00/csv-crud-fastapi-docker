@@ -8,3 +8,6 @@ C:\Users\PC\OneDrive\Documenti\GitHub\csv-crud-fastapi-docker>curl -X POST "http
 uvicorn main:app --reload   
 
 pip install --no-cache-dir -r requirements.txt
+
+docker load -i csv-crud-api-finalespero.tar
+docker run -it --rm -p 8000:8000 csv-crud-api-finalespero
